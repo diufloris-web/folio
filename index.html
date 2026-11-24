@@ -1,0 +1,290 @@
+<!doctype html>
+<!-- data-draft показывает заглушки (портрет и подпись). Когда внесёте реальные данные или решите их скрыть, удалите этот атрибут. -->
+<html lang="ru" data-draft>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЭлитГеоСтрой</title>
+  <meta name="description" content="Строительное бюро. Москва.">
+  <!-- Сайт не показывается в поиске: сюда приходят по ссылке. Чтобы открыть его для поиска, удалите следующую строку. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#16120f">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="ЭлитГеоСтрой">
+  <meta property="og:description" content="Вам о нас рассказали">
+  <!-- После подключения домена замените на полный адрес: https://ваш-домен/img/og.jpg -->
+  <meta property="og:image" content="img/og.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Двери показываются один раз за визит. Ссылка на раздел и настройка «меньше движения» открывают сайт сразу.
+    (function () {
+      var seen = false;
+      try { seen = sessionStorage.getItem("entered") === "1"; } catch (e) {}
+      var toSection = location.hash && location.hash.indexOf("#g=") !== 0 && location.hash !== "#top";
+      var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!seen && !toSection && !calm) document.documentElement.classList.add("gated");
+    })();
+  </script>
+</head>
+<body>
+  <!-- ДВЕРИ -->
+  <div class="gate" role="dialog" aria-modal="true" aria-label="Вход на сайт">
+    <p class="gate-brand">ЭлитГеоСтрой</p>
+    <p class="gate-hello hand"><span data-guest></span><span data-hello>Вам о&nbsp;нас рассказали</span></p>
+    <div class="portal">
+      <div class="leaf leaf-l"><img class="handle" src="img/door/handle.webp" alt="" draggable="false"></div>
+      <div class="leaf leaf-r"><img class="handle" src="img/door/handle.webp" alt="" draggable="false"></div>
+    </div>
+    <button class="gate-open hand" type="button">Потяните за&nbsp;ручку</button>
+  </div>
+
+  <!-- РАМКА ИЗДАНИЯ. Копируется в каждую секцию и обрезается по её границе, поэтому меняет цвет точно на стыке страниц. -->
+  <template id="folio">
+    <div class="folio" aria-hidden="true">
+      <div class="folio-mat"></div>
+      <div class="folio-line"></div>
+      <div class="folio-top">
+        <a class="folio-brand" href="#top" tabindex="-1">ЭлитГеоСтрой</a>
+        <span class="folio-nav">
+          <a href="#project" tabindex="-1">Объект</a>
+          <a href="#details" tabindex="-1">Детали</a>
+          <a href="#bureau" tabindex="-1">Бюро</a>
+          <a href="#meet" tabindex="-1">Знакомство</a>
+        </span>
+        <button class="folio-menu" type="button" tabindex="-1">Содержание</button>
+      </div>
+      <span class="folio-side folio-left">Строительное бюро, Москва</span>
+      <span class="folio-side folio-right">По рекомендации</span>
+      <div class="folio-bottom"><span class="folio-title"></span><span class="folio-num"></span></div>
+    </div>
+  </template>
+
+  <div id="site">
+    <nav class="keys" aria-label="Разделы">
+      <a href="#project">Объект</a><a href="#details">Детали</a><a href="#bureau">Бюро</a><a href="#meet">Знакомство</a>
+    </nav>
+
+    <!-- I. ЗАЛ -->
+    <section class="hero tone-photo" id="top" data-n="I" data-title="Вход">
+      <div class="scene" data-scene="p13-1" data-mode="look" data-ratio="4" data-focus="2.4" data-oy="-0.18" data-soft>
+        <img src="img/p13-1-1200.webp" srcset="img/p13-1-700.webp 700w, img/p13-1-1200.webp 1200w, img/p13-1-1789.webp 1789w" sizes="100vw" width="1789" height="1499" alt="Гостиная: тёмные двери с бронзовыми ручками, паркет, стеновые панели" fetchpriority="high">
+      </div>
+      <div class="hero-text">
+        <p class="hand"><span data-guest></span><span data-welcome>Добро пожаловать</span></p>
+        <h1>Отвечаем за&nbsp;сложные частные проекты от&nbsp;замысла до&nbsp;результата</h1>
+      </div>
+    </section>
+
+    <main id="main">
+      <!-- II. ПРОХОД -->
+      <section class="passage tone-photo" data-n="II" data-title="Предисловие" aria-label="Предисловие">
+        <div class="stage">
+          <div class="scene" data-scene="p10-0" data-mode="walk" data-ratio="7" data-focus="4" data-walk="2.2" data-oy="0.04">
+            <img src="img/p10-0-1200.webp" srcset="img/p10-0-700.webp 700w, img/p10-0-1200.webp 1200w, img/p10-0-1807.webp 1807w" sizes="100vw" width="1807" height="1517" alt="Галерея с каменным полом и рельефным потолком" loading="lazy" decoding="async">
+          </div>
+          <div class="scrim"></div>
+          <p class="passage-a hand">Проходите</p>
+          <p class="passage-b">К&nbsp;нам приходят по&nbsp;рекомендации: от&nbsp;тех, для&nbsp;кого мы уже строили, от&nbsp;архитекторов и&nbsp;дизайнеров. Осмотритесь и&nbsp;решите, стоит&nbsp;ли нам познакомиться.</p>
+        </div>
+      </section>
+
+      <!-- III. ОБЪЕКТ: обложка -->
+      <section class="cover tone-paper" id="project" data-n="III" data-title="Объект">
+        <div class="wrap">
+          <div class="mast"><span>Реализованные проекты</span><span>Выпуск I</span><span>Москва, 2026</span></div>
+          <h2><span class="giant">Пречистенская</span> <span class="sub">набережная</span></h2>
+          <div class="cover-grid">
+            <div class="cover-side">
+              <p class="cover-lead">Гостиничный комплекс с&nbsp;апартаментами и&nbsp;подземной автостоянкой</p>
+              <dl class="colophon">
+                <div><dt>Место</dt><dd>Москва, центр</dd></div>
+                <div><dt>Начало работ</dt><dd>2021</dd></div>
+                <div><dt>Работы бюро</dt><dd>Отделка общественных пространств, благоустройство</dd></div>
+              </dl>
+            </div>
+            <figure class="cover-photo">
+              <div class="scene frame-65" data-scene="p06-0" data-mode="look" data-ratio="4.5" data-focus="2.2" data-strong>
+                <img src="img/p06-0-1200.webp" srcset="img/p06-0-700.webp 700w, img/p06-0-1200.webp 1200w, img/p06-0-1797.webp 1797w" sizes="(max-width: 900px) 100vw, 74vw" width="1797" height="1499" alt="Лобби, светящаяся колонна" loading="lazy" decoding="async">
+              </div>
+              <figcaption><span>Рис. 1. Лобби</span><span class="hand">кадр объёмный, поведите по&nbsp;нему</span></figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Разворот: лобби -->
+        <div class="wrap spread spread-lobby">
+          <figure class="f1 r45"><a class="zoom" href="img/p02-0-1176.webp"><img src="img/p02-0-1176.webp" srcset="img/p02-0-700.webp 700w, img/p02-0-1176.webp 1176w" sizes="(max-width: 900px) 84vw, 38vw" width="1176" height="1191" alt="Коридор к лифтам: камень, бронзовая решётка, зеркало" loading="lazy" decoding="async"></a><figcaption class="vert">Рис. 2. Коридор к&nbsp;лифтам</figcaption></figure>
+          <div class="copy">
+            <h3>Лобби</h3>
+            <p>Потолок сложной геометрии, светящаяся колонна, каменный пол с&nbsp;инкрустацией. Утром свет со&nbsp;двора проходит зал насквозь и&nbsp;ложится на&nbsp;полированный камень.</p>
+          </div>
+          <figure class="f2 r65"><a class="zoom" href="img/p08-0-1797.webp"><img src="img/p08-0-1200.webp" srcset="img/p08-0-700.webp 700w, img/p08-0-1200.webp 1200w, img/p08-0-1797.webp 1797w" sizes="(max-width: 900px) 100vw, 46vw" width="1797" height="1499" alt="Зона ожидания у бронзовой решётки" loading="lazy" decoding="async"></a><figcaption>Рис. 3. Зона ожидания</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- Полный кадр: двери гостиной -->
+      <section class="full tone-photo" data-n="III" data-title="Объект">
+        <div class="scene still pos-mid"><img src="img/p12-0-1200.webp" srcset="img/p12-0-700.webp 700w, img/p12-0-1200.webp 1200w, img/p12-0-1789.webp 1789w" sizes="100vw" width="1789" height="1521" alt="Гостиная, вид через приоткрытые двери" loading="lazy" decoding="async"></div>
+        <div class="full-text"><p>Рис. 4. Гостиная</p></div>
+      </section>
+
+      <!-- Разворот: гостиные -->
+      <section class="tone-walnut" data-n="III" data-title="Объект">
+        <div class="wrap spread spread-lounge">
+          <div class="copy">
+            <h3>Гостиные</h3>
+            <p>Стеновые панели, паркет, двери из&nbsp;тёмного дерева со&nbsp;стеклом. Комнаты переходят одна в&nbsp;другую, и&nbsp;у&nbsp;каждой свой свет.</p>
+          </div>
+          <figure class="f1 r65"><a class="zoom" href="img/p11-0-1811.webp"><img src="img/p11-0-1200.webp" srcset="img/p11-0-700.webp 700w, img/p11-0-1200.webp 1200w, img/p11-0-1811.webp 1811w" sizes="(max-width: 900px) 100vw, 60vw" width="1811" height="1523" alt="Гостиная с серыми стеновыми панелями" loading="lazy" decoding="async"></a><figcaption>Рис. 5. Малая гостиная</figcaption></figure>
+          <figure class="f2 r45"><a class="zoom" href="img/p13-1-1789.webp"><img src="img/p13-1-1200.webp" srcset="img/p13-1-700.webp 700w, img/p13-1-1200.webp 1200w, img/p13-1-1789.webp 1789w" sizes="(max-width: 900px) 80vw, 32vw" width="1789" height="1499" alt="Гостиная: тёмные двери, паркет, панно" loading="lazy" decoding="async"></a><figcaption class="vert">Рис. 6. Большая гостиная</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- Полный кадр: дерево -->
+      <section class="full tone-photo" data-n="III" data-title="Объект">
+        <div class="scene still"><img src="img/p15-2-1200.webp" srcset="img/p15-2-700.webp 700w, img/p15-2-1200.webp 1200w, img/p15-2-1909.webp 1909w" sizes="100vw" width="1909" height="1499" alt="Сауна" loading="lazy" decoding="async"></div>
+        <div class="full-text"><p>Рис. 7. Сауна</p></div>
+      </section>
+
+      <!-- Разворот: СПА -->
+      <section class="tone-paper" data-n="III" data-title="Объект">
+        <div class="wrap spread spread-spa">
+          <figure class="f1 r35"><a class="zoom" href="img/p15-1-809.webp"><img src="img/p15-1-809.webp" srcset="img/p15-1-809.webp 809w" sizes="(max-width: 900px) 64vw, 30vw" width="809" height="1370" alt="Деревянные рейки, овальное зеркало с подсветкой" loading="lazy" decoding="async"></a><figcaption class="vert">Рис. 8. Рейка и&nbsp;свет</figcaption></figure>
+          <figure class="f2 r43"><a class="zoom" href="img/p14-0-1807.webp"><img src="img/p14-0-1200.webp" srcset="img/p14-0-700.webp 700w, img/p14-0-1200.webp 1200w, img/p14-0-1807.webp 1807w" sizes="(max-width: 900px) 100vw, 50vw" width="1807" height="1520" alt="Процедурный кабинет" loading="lazy" decoding="async"></a><figcaption>Рис. 9. Процедурный кабинет</figcaption></figure>
+          <div class="copy">
+            <h3>СПА</h3>
+            <p>Рейка, скрытый свет, стены с&nbsp;мраморным рисунком, сауна.</p>
+          </div>
+          <figure class="f3 r11"><a class="zoom" href="img/p15-0-1500.webp"><img src="img/p15-0-1200.webp" srcset="img/p15-0-700.webp 700w, img/p15-0-1200.webp 1200w, img/p15-0-1500.webp 1500w" sizes="(max-width: 900px) 70vw, 26vw" width="1500" height="1499" alt="Душевая: мраморный рисунок, стекло, зеркало с подсветкой" loading="lazy" decoding="async"></a><figcaption>Рис. 10. Душевая</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- Полный кадр: подземный уровень -->
+      <section class="full tone-photo" data-n="III" data-title="Объект">
+        <div class="scene" data-scene="p16-0" data-mode="pass" data-ratio="6" data-focus="3" data-walk="1.3" data-oy="0.02">
+          <img src="img/p16-0-1200.webp" srcset="img/p16-0-700.webp 700w, img/p16-0-1200.webp 1200w, img/p16-0-1752.webp 1752w" sizes="100vw" width="1752" height="1509" alt="Въезд в подземную автостоянку: рейка и линии света" loading="lazy" decoding="async">
+        </div>
+        <div class="full-text"><h3>Подземный уровень</h3><p>Рис. 11. Въезд решён как интерьер</p></div>
+      </section>
+
+      <!-- Разворот: двор -->
+      <section class="tone-paper" data-n="III" data-title="Объект">
+        <div class="wrap spread spread-yard">
+          <div class="copy">
+            <h3>Двор</h3>
+            <p>Мощение, террасное озеленение, малые архитектурные формы и&nbsp;места для&nbsp;отдыха.</p>
+          </div>
+          <figure class="f1 r65"><a class="zoom" href="img/p17-0-1797.webp"><img src="img/p17-0-1200.webp" srcset="img/p17-0-700.webp 700w, img/p17-0-1200.webp 1200w, img/p17-0-1797.webp 1797w" sizes="(max-width: 900px) 100vw, 64vw" width="1797" height="1499" alt="Внутренний двор" loading="lazy" decoding="async"></a><figcaption>Рис. 12. Внутренний двор</figcaption></figure>
+          <figure class="f2 r45"><a class="zoom" href="img/p18-0-1799.webp"><img src="img/p18-0-1200.webp" srcset="img/p18-0-700.webp 700w, img/p18-0-1200.webp 1200w, img/p18-0-1799.webp 1799w" sizes="(max-width: 900px) 70vw, 26vw" width="1799" height="1499" alt="Дорожка вдоль живой изгороди" loading="lazy" decoding="async"></a><figcaption class="vert">Рис. 13. Дорожка</figcaption></figure>
+        </div>
+      </section>
+
+      <!-- СЛЕДУЮЩИЙ ОБЪЕКТ: скопируйте section.cover (новый «Выпуск») и нужные развороты, замените фото и подписи. -->
+
+      <!-- Полный кадр: известняк -->
+      <section class="full tone-photo" data-n="III" data-title="Объект">
+        <div class="scene still"><img src="img/p03-0-1200.webp" srcset="img/p03-0-700.webp 700w, img/p03-0-1200.webp 1200w, img/p03-0-1600.webp 1600w" sizes="100vw" width="1600" height="1031" alt="Въездная группа, известняк и резной потолок" loading="lazy" decoding="async"></div>
+        <div class="full-text"><p>Рис. 14. Въездная группа</p></div>
+      </section>
+
+      <!-- IV. ДЕТАЛИ -->
+      <section class="details tone-walnut" id="details" data-n="IV" data-title="Детали">
+        <div class="wrap">
+          <div class="details-head">
+            <h2>Подойдите ближе</h2>
+            <p>Общий вид можно сделать красивым светом. Уровень стройки виден на&nbsp;углах, стыках и&nbsp;срезах. Нажмите на&nbsp;таблицу, чтобы отойти и&nbsp;снова приблизиться.</p>
+          </div>
+          <div class="macros">
+            <figure class="macro" style="--w:119.880%;--h:100.000%;--k:3.259;--x1:-16.321%;--y1:-225.000%;--x0:-0.000%;--y0:-0.000%"><div class="macro-plate"><button class="macro-view" type="button" aria-pressed="true" aria-label="Приблизить: Инкрустация каменного пола"><img src="img/p06-0-1797.webp" width="1797" height="1499" alt="Инкрустация каменного пола" loading="lazy" decoding="async"></button></div><figcaption><span class="no">Таблица I</span><p class="hand">Угол, с которого начинают</p><p>Две полосы тёмного камня поворачивают вместе и&nbsp;держат между собой один шаг. Если разметка ушла, это видно именно здесь.</p></figcaption></figure>
+            <figure class="macro" style="--w:117.620%;--h:100.000%;--k:3.900;--x1:-56.680%;--y1:-108.974%;--x0:-0.000%;--y0:-0.000%"><div class="macro-plate"><button class="macro-view" type="button" aria-pressed="true" aria-label="Приблизить: Бронзовая ручка на двери из тёмного дерева"><img src="img/p12-0-1789.webp" width="1789" height="1521" alt="Бронзовая ручка на двери из тёмного дерева" loading="lazy" decoding="async"></button></div><figcaption><span class="no">Таблица II</span><p class="hand">То, чего касаются рукой</p><p>Рифление, гладкая гильза, крепление к&nbsp;деревянному бруску.</p></figcaption></figure>
+            <figure class="macro" style="--w:100.000%;--h:102.408%;--k:2.769;--x1:-83.333%;--y1:-76.724%;--x0:-0.000%;--y0:-0.000%"><div class="macro-plate"><button class="macro-view" type="button" aria-pressed="true" aria-label="Приблизить: Бронзовая решётка на фоне окна"><img src="img/p04-0-1163.webp" width="1163" height="1191" alt="Бронзовая решётка на фоне окна" loading="lazy" decoding="async"></button></div><figcaption><span class="no">Таблица III</span><p class="hand">Решётка на просвет</p><p>Узор читается на&nbsp;фоне окна, каждое пересечение на&nbsp;виду.</p></figcaption></figure>
+            <figure class="macro" style="--w:100.000%;--h:169.345%;--k:2.022;--x1:-75.000%;--y1:-76.766%;--x0:-0.000%;--y0:-23.029%"><div class="macro-plate"><button class="macro-view" type="button" aria-pressed="true" aria-label="Приблизить: Овальное зеркало на реечной стене с подсветкой"><img src="img/p15-1-809.webp" width="809" height="1370" alt="Овальное зеркало на реечной стене с подсветкой" loading="lazy" decoding="async"></button></div><figcaption><span class="no">Таблица IV</span><p class="hand">Свет не прощает</p><p>Подсветка скользит вдоль рейки и&nbsp;выдала&nbsp;бы любую неровность.</p></figcaption></figure>
+            <figure class="macro" style="--w:119.813%;--h:100.000%;--k:3.465;--x1:-93.615%;--y1:-241.892%;--x0:-0.000%;--y0:-0.000%"><div class="macro-plate"><button class="macro-view" type="button" aria-pressed="true" aria-label="Приблизить: Паркет ёлочкой у светлого цоколя"><img src="img/p13-0-1536.webp" width="1536" height="1282" alt="Паркет ёлочкой у светлого цоколя" loading="lazy" decoding="async"></button></div><figcaption><span class="no">Таблица V</span><p class="hand">Линия у стены</p><p>Ёлочка подходит к&nbsp;светлому цоколю. Прямой линии негде спрятаться.</p></figcaption></figure>
+            <figure class="macro" style="--w:155.189%;--h:100.000%;--k:2.062;--x1:-65.726%;--y1:-4.000%;--x0:-15.281%;--y0:-0.000%"><div class="macro-plate"><button class="macro-view" type="button" aria-pressed="true" aria-label="Приблизить: Резной потолок в обрамлении тёмной линии"><img src="img/p03-0-1600.webp" width="1600" height="1031" alt="Резной потолок в обрамлении тёмной линии" loading="lazy" decoding="async"></button></div><figcaption><span class="no">Таблица VI</span><p class="hand">Кривая без слома</p><p>Тёмная линия обходит резной рельеф по&nbsp;плавной дуге, а&nbsp;плиты вокруг раскроены под&nbsp;неё.</p></figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Полный кадр: отойти и увидеть целое -->
+      <section class="full tone-photo" data-n="IV" data-title="Детали">
+        <div class="scene still"><img src="img/p01-0-1200.webp" srcset="img/p01-0-700.webp 700w, img/p01-0-1200.webp 1200w, img/p01-0-2669.webp 2669w" sizes="100vw" width="2669" height="1236" alt="Внутренний двор, дерево и террасы" loading="lazy" decoding="async"></div>
+        <div class="full-text"><p>Из&nbsp;этого складывается целое</p></div>
+      </section>
+
+      <!-- V. БЮРО -->
+      <section class="bureau tone-linen" id="bureau" data-n="V" data-title="Бюро">
+        <div class="wrap">
+          <p class="quote">Ошибка на&nbsp;чертеже стоит дня, в&nbsp;камне она&nbsp;стоит месяца.</p>
+          <div class="bureau-grid">
+            <!-- МЕСТО ПОРТРЕТА: замените содержимое .plate-empty на <img src="img/файл.webp" alt="Имя Фамилия" width="900" height="1125"> -->
+            <figure class="author placeholder">
+              <div class="plate"><div class="plate-empty"><span>Место портрета</span></div></div>
+              <figcaption><span class="hand">Имя Фамилия</span><span>Роль в&nbsp;бюро</span></figcaption>
+            </figure>
+            <div class="answers">
+              <div>
+                <h2>Как мы берёмся за&nbsp;сложное</h2>
+                <p>Разбираем проект на&nbsp;узлы: где сходятся материалы, инженерия и&nbsp;свет. Спорные места решаем до&nbsp;начала работ.</p>
+              </div>
+              <div>
+                <h2>Кто отвечает</h2>
+                <p>Один человек. Он&nbsp;знает объект целиком, принимает решения и&nbsp;отвечает на&nbsp;ваш звонок.</p>
+              </div>
+              <div>
+                <h2>Как мы говорим с&nbsp;вами</h2>
+                <p>Коротко и&nbsp;заранее. О&nbsp;риске сообщаем, пока есть выбор, и&nbsp;сразу с&nbsp;вариантами. Изменения сначала согласуем, затем выполняем.</p>
+              </div>
+              <div>
+                <h2>Что не&nbsp;меняется</h2>
+                <p>Не&nbsp;прячем ошибку под отделкой. Не&nbsp;меняем материал без вашего согласия. Не&nbsp;обсуждаем заказчика и&nbsp;его дом.</p>
+              </div>
+              <p class="imprint">В&nbsp;строительстве с&nbsp;2010&nbsp;года, как компания «ЭлитГеоСтрой» с&nbsp;2019. Строим, реконструируем, ведём капитальный ремонт, отделку и&nbsp;благоустройство.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- VI. ФИНАЛ -->
+    <section class="meet tone-night" id="meet" data-n="VI" data-title="Знакомство">
+      <div class="meet-door" aria-hidden="true"><div class="leaf leaf-l"><img class="handle" src="img/door/handle.webp" alt="" loading="lazy"></div></div>
+      <div class="wrap meet-text">
+        <p class="hand">Дверь открыта</p>
+        <h2>Начать знакомство</h2>
+        <p>Первый разговор ни&nbsp;к&nbsp;чему не&nbsp;обязывает. Он&nbsp;остаётся между нами.</p>
+        <dl class="colophon">
+          <div><dt>Телефон</dt><dd><a href="tel:+79689975708">+7&nbsp;968&nbsp;997-57-08</a><a href="tel:+79164382422">+7&nbsp;916&nbsp;438-24-22</a></dd></div>
+          <div><dt>Почта</dt><dd><a href="mailto:elitegeostroy@yandex.ru">elitegeostroy@yandex.ru</a></dd></div>
+        </dl>
+        <p class="meet-actions">
+          <a class="btn" href="mailto:elitegeostroy@yandex.ru?subject=%D0%A7%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82">Обсудить частный проект</a>
+          <a href="elitgeostroy.vcf" download>Сохранить контакт</a>
+        </p>
+        <p class="legal">ООО СК «ЭлитГеоСтрой»</p>
+      </div>
+    </section>
+  </div>
+
+  <dialog class="contents" aria-label="Содержание">
+    <button type="button" data-close>Закрыть</button>
+    <nav>
+      <a href="#top"><span>Вход</span><i>I</i></a>
+      <a href="#project"><span>Объект</span><i>III</i></a>
+      <a href="#details"><span>Детали</span><i>IV</i></a>
+      <a href="#bureau"><span>Бюро</span><i>V</i></a>
+      <a href="#meet"><span>Знакомство</span><i>VI</i></a>
+    </nav>
+  </dialog>
+  <dialog class="viewer" aria-label="Просмотр фотографий">
+    <div class="viewer-bar"><p></p><button type="button" data-close>Закрыть</button></div>
+    <div class="viewer-stage"><img alt=""></div>
+    <div class="viewer-bar"><button type="button" data-prev>Назад</button><button type="button" data-zoom aria-pressed="false">Приблизить</button><button type="button" data-next>Вперёд</button></div>
+  </dialog>
+  <div class="lens" aria-hidden="true"></div>
+
+  <script src="scene.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
